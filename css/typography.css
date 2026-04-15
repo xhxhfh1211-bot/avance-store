@@ -1,0 +1,138 @@
+/* ================================
+   AVANCE STORE - Typography
+   세리프 헤드라인 + 산세리프 본문
+   tokens.css 변수만 사용
+================================ */
+
+/* Cormorant Garamond — 헤드라인 세리프 */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap");
+
+/* Pretendard — 한글 본문 산세리프 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css");
+
+/* --------------------------------
+   Base
+-------------------------------- */
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-body);
+  line-height: var(--line-body);
+  color: var(--ink);
+  background-color: var(--bg-cream);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------
+   Headings — 세리프
+-------------------------------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--font-hero);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: var(--font-h2);
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.25;
+}
+
+h4 {
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+/* --------------------------------
+   Body text
+-------------------------------- */
+p {
+  font-family: var(--font-sans);
+  font-size: var(--font-body);
+  line-height: var(--line-body);
+  color: var(--ink);
+  margin: 0;
+}
+
+span {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* --------------------------------
+   Utilities
+-------------------------------- */
+.text-muted {
+  color: var(--muted);
+}
+
+.text-jade {
+  color: var(--jade);
+}
+
+.text-saffron {
+  color: var(--saffron);
+}
+
+/* 캡션 / 오버라인 — 카테고리, 원산지 표기용 */
+.text-caption {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* 세리프 강조 — 인용 문구, 브랜드 카피 */
+.text-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+/* --------------------------------
+   Responsive — 모바일
+-------------------------------- */
+@media (max-width: 768px) {
+  body {
+    line-height: 1.6;
+  }
+
+  h1 {
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    line-height: 1.15;
+  }
+
+  .text-caption {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
+}

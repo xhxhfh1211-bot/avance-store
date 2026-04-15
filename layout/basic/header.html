@@ -1,0 +1,115 @@
+<!-- ============================================================
+     AVANCE STORE · Global Header (카페24 /layout/basic/header.html)
+     - Skip link, Promo bar, Header (logo/nav/actions), Mobile drawer
+     - 카페24 템플릿 변수 자리는 주석으로 표시 (이식 전 치환)
+     - 의존: css/tokens.css, typography.css, components.css
+============================================================ -->
+
+<!-- Skip links (접근성 필수) -->
+<a class="skip-link" href="#main">본문 바로가기</a>
+<a class="skip-link" href="#gnb">주메뉴 바로가기</a>
+
+<!-- ===== 1. Promo Bar ===== -->
+<!-- 카페24 공지 변수 자리:
+     <!--@공지사항 제목 또는 배너 링크 변수--> -->
+<div class="promo-bar" id="promoBar" role="region" aria-label="프로모션 공지">
+  <span class="promo-bar__message">
+    FREE SHIPPING ON ORDERS OVER ₩50,000 —
+    <a href="/kr/ko/life/event">SHOP NOW</a>
+  </span>
+  <button class="promo-bar__close"
+          type="button"
+          aria-label="프로모션 띠 닫기"
+          data-promo-close>×</button>
+</div>
+
+<!-- ===== 2. Header ===== -->
+<header class="header" id="siteHeader" data-header>
+  <div class="header__inner container">
+
+    <!-- 모바일 햄버거 -->
+    <button class="header__hamburger"
+            type="button"
+            aria-label="메뉴 열기"
+            aria-expanded="false"
+            aria-controls="mobileDrawer"
+            data-menu-toggle>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- 로고 (좌측) — 추후 /images/logo.svg 로 교체 -->
+    <a class="header__logo" href="/" aria-label="AVANCE STORE 홈">
+      <span class="header__logo-text">AVANCE</span>
+    </a>
+
+    <!-- 네비게이션 (중앙) -->
+    <nav class="header__nav" id="gnb" aria-label="주 메뉴">
+      <ul class="header__nav-list">
+        <li><a href="/product/list.html?cate_no=dried-fruits">건과일</a></li>
+        <li><a href="/product/list.html?cate_no=coffee">커피</a></li>
+        <li><a href="/product/list.html?cate_no=specialties">특산품</a></li>
+        <li><a href="/brand-story">브랜드 스토리</a></li>
+      </ul>
+    </nav>
+
+    <!-- 우측 액션 -->
+    <div class="header__actions">
+      <button class="header__icon-btn"
+              type="button"
+              aria-label="검색 열기"
+              data-search-toggle>
+        <!-- 검색 아이콘 -->
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m20 20-3.5-3.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- 카페24 링크 자리:
+           계정: <!--@link_member_login--> / <!--@link_logout-->
+           장바구니: /order/basket.html -->
+      <a class="header__icon-btn"
+         href="/order/basket.html"
+         aria-label="장바구니">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 7h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8L4 7Z" stroke-linejoin="round"/>
+          <path d="M9 7V5a3 3 0 0 1 6 0v2" stroke-linecap="round"/>
+        </svg>
+        <!-- 카페24 장바구니 수량 변수 자리:
+             <span class="header__cart-count">{$basket_count}</span> -->
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<!-- ===== 3. Mobile Drawer ===== -->
+<aside class="mobile-drawer"
+       id="mobileDrawer"
+       aria-hidden="true"
+       hidden>
+  <div class="mobile-drawer__inner">
+    <button class="mobile-drawer__close"
+            type="button"
+            aria-label="메뉴 닫기"
+            data-menu-close>×</button>
+
+    <nav aria-label="모바일 메뉴">
+      <ul class="mobile-drawer__list">
+        <li><a href="/product/list.html?cate_no=dried-fruits">건과일</a></li>
+        <li><a href="/product/list.html?cate_no=coffee">커피</a></li>
+        <li><a href="/product/list.html?cate_no=specialties">특산품</a></li>
+        <li><a href="/brand-story">브랜드 스토리</a></li>
+      </ul>
+    </nav>
+
+    <!-- 카페24 로그인 링크 자리:
+         <!--@link_member_login--> 또는 <!--@link_logout--> -->
+    <div class="mobile-drawer__auth">
+      <a href="/member/login.html">로그인</a>
+      <a href="/myshop">마이페이지</a>
+    </div>
+  </div>
+</aside>

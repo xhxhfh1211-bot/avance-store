@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- ============================================================
+       AVANCE STORE · Root Layout (카페24 /layout/basic/layout.html)
+       - 모든 페이지의 최상위 래퍼
+       - <!--@contents--> 자리에 각 페이지(main/index.html 등)가 주입됨
+  ============================================================ -->
+
+  <meta charset="UTF-8">
+  <!-- ⚠ user-scalable=no / maximum-scale 절대 금지 (접근성) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#FAF7F2">
+
+  <!-- 카페24 샵 이름 변수 자리 -->
+  <title><!-- {$mall_name} -->AVANCE STORE</title>
+
+  <!-- 카페24 SEO 변수 자리 -->
+  <!-- <meta name="description" content="{$mall_description}"> -->
+  <!-- <meta name="keywords" content="{$mall_keywords}"> -->
+  <meta name="description" content="From Vietnam, with care. 프리미엄 베트남 특산품 · 건과일 · 커피 · 오리진 셀렉션.">
+
+  <!-- Open Graph -->
+  <!-- <meta property="og:title" content="{$mall_name}"> -->
+  <!-- <meta property="og:description" content="{$mall_description}"> -->
+  <!-- <meta property="og:image" content="{$og_image}"> -->
+  <!-- <meta property="og:url" content="{$current_url}"> -->
+  <meta property="og:title" content="AVANCE STORE">
+  <meta property="og:description" content="From Vietnam, with care.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon (카페24 파비콘 변수 자리) -->
+  <!-- <link rel="icon" href="{$favicon_url}"> -->
+  <link rel="icon" href="/images/favicon.ico">
+
+  <!-- ===== Fonts ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- Cormorant Garamond — 헤드라인 세리프 -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap">
+
+  <!-- Pretendard — 한글 본문 산세리프 -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+
+  <!-- Swiper CSS (캐러셀) -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- ===== Styles (load order matters) ===== -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- 카페24 페이지별 추가 head 주입 자리 -->
+  <!-- <!--@import("head_extra.html")--> -->
+</head>
+
+<body>
+
+  <!-- ===== Header (partial) ===== -->
+  <!--@import("/layout/basic/header.html")-->
+
+  <!-- ===== Page Content ===== -->
+  <main id="main" role="main">
+    <!--@contents-->
+  </main>
+
+  <!-- ===== Footer (partial) ===== -->
+  <!--@import("/layout/basic/footer.html")-->
+
+  <!-- ===== Scripts ===== -->
+  <!-- Swiper JS (캐러셀 엔진) -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+  <!-- AVANCE 스크립트 -->
+  <script src="/js/main.js" defer></script>
+  <script src="/js/swiper-init.js" defer></script>
+
+  <!-- 카페24 페이지별 추가 script 주입 자리 -->
+  <!-- <!--@import("script_extra.html")--> -->
+</body>
+</html>

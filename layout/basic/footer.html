@@ -1,0 +1,141 @@
+<!-- ============================================================
+     AVANCE STORE · Global Footer (카페24 /layout/basic/footer.html)
+     - Top: 로고 + 브랜드 카피
+     - Middle: Shop / Brand / Customer / SNS (4열)
+     - Bottom: 사업자 정보 + 약관 + copyright
+     - 카페24 회사 정보 변수는 주석으로 자리 표시
+     - 의존: css/tokens.css, typography.css, components.css
+============================================================ -->
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner container">
+
+    <!-- ===== 1. Footer Top ===== -->
+    <div class="footer__top">
+      <a class="footer__logo" href="/" aria-label="AVANCE STORE 홈">
+        <span class="footer__logo-text">AVANCE</span>
+      </a>
+      <p class="footer__tagline text-serif">From Vietnam, with care.</p>
+    </div>
+
+    <!-- ===== 2. Footer Middle (4-column grid) ===== -->
+    <div class="footer__grid">
+
+      <!-- 1열: Shop -->
+      <nav class="footer__col" aria-label="쇼핑 메뉴">
+        <h4 class="footer__col-title">Shop</h4>
+        <ul class="footer__list">
+          <li><a href="/product/list.html?cate_no=dried-fruits">건과일</a></li>
+          <li><a href="/product/list.html?cate_no=coffee">커피</a></li>
+          <li><a href="/product/list.html?cate_no=specialties">특산품</a></li>
+          <li><a href="/product/list.html?cate_no=best">베스트</a></li>
+        </ul>
+      </nav>
+
+      <!-- 2열: Brand -->
+      <nav class="footer__col" aria-label="브랜드 메뉴">
+        <h4 class="footer__col-title">Brand</h4>
+        <ul class="footer__list">
+          <li><a href="/brand-story">브랜드 스토리</a></li>
+          <li><a href="/origins">오리진</a></li>
+          <li><a href="/journal">저널</a></li>
+        </ul>
+      </nav>
+
+      <!-- 3열: Customer -->
+      <nav class="footer__col" aria-label="고객센터 메뉴">
+        <h4 class="footer__col-title">Customer</h4>
+        <ul class="footer__list">
+          <li><a href="/board/faq">FAQ</a></li>
+          <li><a href="/shipping-info">배송 안내</a></li>
+          <li><a href="/return-policy">교환 · 반품</a></li>
+        </ul>
+      </nav>
+
+      <!-- 4열: SNS -->
+      <div class="footer__col" aria-label="SNS">
+        <h4 class="footer__col-title">Follow</h4>
+        <ul class="footer__sns">
+          <li>
+            <a href="https://www.instagram.com/"
+               target="_blank" rel="noopener"
+               aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://pf.kakao.com/"
+               target="_blank" rel="noopener"
+               aria-label="카카오톡 채널">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 4C7 4 3 7.3 3 11.3c0 2.5 1.7 4.8 4.3 6l-1 3.6 4.2-2.7c.5.1 1 .1 1.5.1 5 0 9-3.3 9-7.3S17 4 12 4Z" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/"
+               target="_blank" rel="noopener"
+               aria-label="YouTube">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2.5" y="6" width="19" height="12" rx="3"/>
+                <path d="m10 9.5 5 2.5-5 2.5v-5Z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ===== 3. Footer Bottom ===== -->
+    <div class="footer__bottom">
+
+      <!-- 사업자 정보 — 카페24 회사 정보 변수 자리 -->
+      <dl class="footer__biz">
+        <div class="footer__biz-row">
+          <dt>상호</dt>
+          <dd><!-- {$company_name} --> AVANCE STORE</dd>
+          <dt>대표</dt>
+          <dd><!-- {$president_name} --> 홍길동</dd>
+        </div>
+        <div class="footer__biz-row">
+          <dt>사업자등록번호</dt>
+          <dd><!-- {$company_regno} --> 000-00-00000</dd>
+          <dt>통신판매업신고</dt>
+          <dd><!-- {$mailorder_regno} --> 제0000-서울-0000호</dd>
+        </div>
+        <div class="footer__biz-row">
+          <dt>주소</dt>
+          <dd><!-- {$company_address} --> 서울특별시 OO구 OO로 00</dd>
+        </div>
+        <div class="footer__biz-row">
+          <dt>고객센터</dt>
+          <dd>
+            <!-- {$cs_phone} --> 02-000-0000 ·
+            <a href="mailto:hello@avancestore.kr">hello@avancestore.kr</a>
+          </dd>
+          <dt>운영시간</dt>
+          <dd>평일 10:00 – 18:00 (공휴일 휴무)</dd>
+        </div>
+      </dl>
+
+      <!-- 약관 / copyright -->
+      <div class="footer__legal">
+        <ul class="footer__legal-links" aria-label="약관 및 정책">
+          <li><a href="/terms">이용약관</a></li>
+          <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+          <li><a href="/guide">이용안내</a></li>
+        </ul>
+        <p class="footer__copyright">
+          © <span data-year>2026</span> AVANCE STORE. All rights reserved.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</footer>

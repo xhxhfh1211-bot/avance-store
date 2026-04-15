@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVANCE STORE — Style Guide</title>
+
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/typography.css">
+  <link rel="stylesheet" href="./css/components.css">
+
+  <style>
+    /* ----- Style Guide 전용 내부 스타일 ----- */
+    body {
+      background-color: var(--bg-cream);
+      min-height: 100vh;
+    }
+
+    .sg-header {
+      padding: var(--space-block) 0 var(--space-card);
+      border-bottom: 1px solid var(--border);
+    }
+    .sg-header__eyebrow {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .sg-header__title {
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 5vw, 72px);
+      line-height: 1.05;
+      color: var(--ink);
+      letter-spacing: -0.015em;
+      margin: 0;
+    }
+    .sg-header__sub {
+      font-family: var(--font-sans);
+      color: var(--muted);
+      margin-top: 16px;
+      max-width: 640px;
+    }
+
+    .sg-section {
+      padding: var(--space-block) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .sg-section__label {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .sg-section__title {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 3.4vw, 44px);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin: 0 0 var(--space-card);
+      color: var(--ink);
+    }
+    .sg-section__note {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 720px;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    /* --- Color palette grid --- */
+    .sg-colors {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .sg-color {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .sg-color__swatch {
+      height: 120px;
+    }
+    .sg-color__meta {
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .sg-color__name {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .sg-color__var {
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .sg-color__hex {
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* --- Typography demo --- */
+    .sg-type-stack > * + * {
+      margin-top: var(--space-card);
+    }
+    .sg-type-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: var(--space-card);
+      align-items: baseline;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .sg-type-row__tag {
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* --- Button row --- */
+    .sg-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-card);
+      align-items: center;
+    }
+
+    /* --- Product grid (2 cards) --- */
+    .sg-products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-block);
+      max-width: 720px;
+    }
+    .sg-dummy-image {
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(135deg, var(--border) 0%, #D9D1C1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* --- Badge row --- */
+    .sg-badges {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* --- Promo bar preview --- */
+    .sg-promo-preview {
+      position: relative;
+      margin-top: var(--space-card);
+    }
+
+    /* Footer */
+    .sg-footer {
+      padding: var(--space-block) 0;
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Promo bar reuses .promo-bar with sticky positioning at top */
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Live Promo Bar (실제 컴포넌트 그대로 렌더)
+  ============================================================ -->
+  <div class="promo-bar" id="livePromoBar">
+    <span class="promo-bar__message">
+      FREE SHIPPING ON ORDERS OVER ₩50,000 — <a href="#">SHOP NOW</a>
+    </span>
+    <button class="promo-bar__close" type="button" aria-label="프로모션 띠 닫기"
+            onclick="document.getElementById('livePromoBar').setAttribute('hidden','')">
+      ×
+    </button>
+  </div>
+
+  <div class="container">
+
+    <!-- ============================================================
+         HEADER
+    ============================================================ -->
+    <header class="sg-header">
+      <p class="sg-header__eyebrow">AVANCE STORE · DESIGN SYSTEM</p>
+      <h1 class="sg-header__title">Style Guide</h1>
+      <p class="sg-header__sub">
+        카페24 스킨에 이식되기 전, 모든 디자인 토큰과 컴포넌트를 한 화면에서 검증하기 위한 리빙 도큐먼트. 하드코딩 없이 tokens.css 변수만을 소비합니다.
+      </p>
+    </header>
+
+    <!-- ============================================================
+         1. COLOR PALETTE
+    ============================================================ -->
+    <section class="sg-section">
+      <p class="sg-section__label">01 · Colors</p>
+      <h2 class="sg-section__title">Color Palette</h2>
+
+      <div class="sg-colors">
+        <div class="sg-color">
+          <div class="sg-color__swatch" style="background-color: var(--bg-cream);"></div>
+          <div class="sg-color__meta">
+            <span class="sg-color__name">Cream</span>
+            <span class="sg-color__var">--bg-cream</span>
+            <span class="sg-color__hex">#FAF7F2</span>
+          </div>
+        </div>
+
+        <div class="sg-color">
+          <div class="sg-color__swatch" style="background-color: var(--surface); border-bottom: 1px solid var(--border);"></div>
+          <div class="sg-color__meta">
+            <span class="sg-color__name">Surface</span>
+            <span class="sg-color__var">--surface</span>
+            <span class="sg-color__hex">#FFFFFF</span>
+          </div>
+        </div>
+
+        <div class="sg-color">
+          <div class="sg-color__swatch" style="background-color: var(--ink);"></div>
+          <div class="sg-color__meta">
+            <span class="sg-color__name">Ink</span>
+            <span class="sg-color__var">--ink</span>
+            <span class="sg-color__hex">#1A1A1A</span>
+          </div>
+        </div>
+
+        <div class="sg-color">
+          <div class="sg-color__swatch" style="background-color: var(--muted);"></div>
+          <div class="sg-color__meta">
+            <span class="sg-color__name">Muted</span>
+            <span class="sg-color__var">--muted</span>
+            <span class="sg-color__hex">#7A6F61</span>
+          </div>
+        </div>
+
+        <div class="sg-color">
+          <div class="sg-color__swatch" style="background-color: var(--jade);"></div>
+          <div class="sg-color__meta">
+            <span class="sg-color__name">Jade</span>
+            <span class="sg-color__var">--jade</span>
+            <span class="sg-color__hex">#2D5F4F</span>
+          </div>
+        </div>
+
+        <div class="sg-color">
+          <div class="sg-color__swatch" style="background-color: var(--saffron);"></div>
+          <div class="sg-color__meta">
+            <span class="sg-color__name">Saffron</span>
+            <span class="sg-color__var">--saffron</span>
+            <span class="sg-color__hex">#C8893A</span>
+          </div>
+        </div>
+
+        <div class="sg-color">
+          <div class="sg-color__swatch" style="background-color: var(--border);"></div>
+          <div class="sg-color__meta">
+            <span class="sg-color__name">Border</span>
+            <span class="sg-color__var">--border</span>
+            <span class="sg-color__hex">#E8E1D5</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="sg-section__note">
+        빨간 할인 배지는 절대 사용하지 않습니다. 모든 액센트는 Jade · Saffron 두 가지로 표현합니다.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         2. TYPOGRAPHY
+    ============================================================ -->
+    <section class="sg-section">
+      <p class="sg-section__label">02 · Typography</p>
+      <h2 class="sg-section__title">Typography</h2>
+
+      <div class="sg-type-stack">
+        <div class="sg-type-row">
+          <span class="sg-type-row__tag">h1</span>
+          <h1>From Vietnam, with care.</h1>
+        </div>
+        <div class="sg-type-row">
+          <span class="sg-type-row__tag">h2</span>
+          <h2>Our favorites</h2>
+        </div>
+        <div class="sg-type-row">
+          <span class="sg-type-row__tag">h3</span>
+          <h3>Dalat Single Origin</h3>
+        </div>
+        <div class="sg-type-row">
+          <span class="sg-type-row__tag">h4</span>
+          <h4>Tasting Notes</h4>
+        </div>
+        <div class="sg-type-row">
+          <span class="sg-type-row__tag">p</span>
+          <p>
+            달랏 고원에서 자란 아라비카를 천천히 로스팅한 싱글 오리진. 꿀과 다크 초콜릿의 여운이 길게 남습니다.
+          </p>
+        </div>
+        <div class="sg-type-row">
+          <span class="sg-type-row__tag">.text-caption</span>
+          <p class="text-caption">Dalat, Vietnam</p>
+        </div>
+        <div class="sg-type-row">
+          <span class="sg-type-row__tag">.text-muted</span>
+          <p class="text-muted">보조 정보, 메타 텍스트에 사용합니다.</p>
+        </div>
+        <div class="sg-type-row">
+          <span class="sg-type-row__tag">.text-jade</span>
+          <p class="text-jade">브랜드 메인 액센트 컬러.</p>
+        </div>
+        <div class="sg-type-row">
+          <span class="sg-type-row__tag">.text-saffron</span>
+          <p class="text-saffron">CTA · 가격 · 활성 상태.</p>
+        </div>
+        <div class="sg-type-row">
+          <span class="sg-type-row__tag">.text-serif</span>
+          <p class="text-serif">인용과 브랜드 카피에 쓰는 세리프 강조.</p>
+        </div>
+      </div>
+
+      <p class="sg-section__note">
+        헤드라인은 Cormorant Garamond(세리프), 본문은 Pretendard(산세리프). 인터넷이 끊겨 폰트가 로드되지 않아도 시스템 폴백으로 레이아웃은 유지됩니다.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         3. BUTTONS
+    ============================================================ -->
+    <section class="sg-section">
+      <p class="sg-section__label">03 · Buttons</p>
+      <h2 class="sg-section__title">Buttons</h2>
+
+      <div class="sg-row">
+        <button class="btn-primary" type="button">Add to Cart</button>
+        <button class="btn-secondary" type="button">Learn More</button>
+        <a class="btn-ghost" href="#">View All →</a>
+      </div>
+
+      <p class="sg-section__note">
+        모든 버튼의 상태 전환은 <code>--duration-slow</code> (600ms) + <code>--ease-avance</code>. 짧고 경쾌한 인터랙션은 의도적으로 피합니다.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         4. PRODUCT CARDS
+    ============================================================ -->
+    <section class="sg-section">
+      <p class="sg-section__label">04 · Product Cards</p>
+      <h2 class="sg-section__title">Product Cards</h2>
+
+      <div class="sg-products">
+
+        <!-- Card 1 -->
+        <article class="product-card">
+          <div class="product-card__image">
+            <div class="sg-dummy-image">Product Image 4:5</div>
+
+            <!-- 카페24 add_cart.html form 자리 -->
+            <div class="product-card__cta">
+              <button class="btn-primary" type="button">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <!-- {$brand_name} 자리 -->
+            <p class="product-card__origin">Dalat, Vietnam</p>
+            <!-- {$product_name} 자리 -->
+            <h3 class="product-card__name">Highland Arabica 250g</h3>
+            <!-- {$price} 자리 -->
+            <p class="product-card__price">32,000원</p>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="product-card">
+          <div class="product-card__image">
+            <div class="sg-dummy-image">Product Image 4:5</div>
+
+            <div class="product-card__cta">
+              <button class="btn-primary" type="button">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <p class="product-card__origin">Mekong Delta</p>
+            <h3 class="product-card__name">Dried Mango Slices 180g</h3>
+            <p class="product-card__price">18,000원</p>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="sg-section__note">
+        데스크탑에서는 호버 시 ADD TO CART가 페이드인(600ms). 모바일에서는 터치 UX 때문에 상시 노출로 전환됩니다.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         5. BADGES
+    ============================================================ -->
+    <section class="sg-section">
+      <p class="sg-section__label">05 · Badges</p>
+      <h2 class="sg-section__title">Badges</h2>
+
+      <div class="sg-badges">
+        <span class="badge badge-new">New</span>
+        <span class="badge badge-sale">Limited</span>
+      </div>
+
+      <p class="sg-section__note">
+        할인 표기에 빨간색은 사용하지 않습니다. <code>badge-sale</code>은 세일이 아니라 "Limited / Member Price" 같은 워드 배지로 사용합니다.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         6. PROMO BAR (inline preview)
+    ============================================================ -->
+    <section class="sg-section">
+      <p class="sg-section__label">06 · Promo Bar</p>
+      <h2 class="sg-section__title">Promo Bar</h2>
+
+      <div class="sg-promo-preview">
+        <!-- 페이지 상단의 sticky 버전과 별개로, 인라인 샘플 -->
+        <div class="promo-bar" style="position: static;">
+          <span class="promo-bar__message">
+            NEW: DALAT HIGHLAND ARABICA — <a href="#">Discover the origin</a>
+          </span>
+          <button class="promo-bar__close" type="button" aria-label="샘플 닫기 (동작 안 함)">×</button>
+        </div>
+      </div>
+
+      <p class="sg-section__note">
+        페이지 최상단의 띠는 <code>position: sticky</code>. 닫기 버튼은 <code>[hidden]</code> 속성을 부여해 숨깁니다. 실제 페이지에서는 main.js가 로컬 스토리지에 닫힘 상태를 기록합니다.
+      </p>
+    </section>
+
+    <footer class="sg-footer">
+      AVANCE STORE · INTERNAL STYLE GUIDE · v0.1
+    </footer>
+
+  </div>
+
+</body>
+</html>

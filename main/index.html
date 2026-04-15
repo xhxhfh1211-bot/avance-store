@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- ============================================================
+       AVANCE STORE · Home (로컬 프리뷰 버전)
+       - 카페24 이식 시: header/footer를 <!--@import-->로 교체
+       - CSS 경로는 로컬 상대경로 (../css/...) 사용
+  ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#FAF7F2">
+
+  <title>AVANCE STORE — From Vietnam, with care.</title>
+  <meta name="description" content="From Vietnam, with care. 프리미엄 베트남 특산품 · 건과일 · 커피 · 오리진 셀렉션.">
+
+  <meta property="og:title" content="AVANCE STORE">
+  <meta property="og:description" content="From Vietnam, with care.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+
+  <!-- Swiper -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- AVANCE Styles (load order: tokens → typography → components → main) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/main.css">
+
+  <style>
+    /* 로컬 프리뷰 전용 — 더미 이미지 플레이스홀더 */
+    .dummy-image {
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(135deg, var(--border) 0%, #D9D1C1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .dummy-image--dark {
+      background:
+        linear-gradient(135deg, #3A3A38 0%, #1A1A1A 100%);
+      color: var(--muted);
+    }
+    .dummy-image--jade {
+      background:
+        linear-gradient(135deg, #3D7267 0%, #2D5F4F 100%);
+      color: var(--surface);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Skip Links
+  ============================================================ -->
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <a class="skip-link" href="#gnb">주메뉴 바로가기</a>
+
+  <!-- ============================================================
+       Promo Bar
+  ============================================================ -->
+  <div class="promo-bar" id="promoBar" role="region" aria-label="프로모션 공지">
+    <span class="promo-bar__message">
+      FREE SHIPPING ON ORDERS OVER ₩50,000 —
+      <a href="#">SHOP NOW</a>
+    </span>
+    <button class="promo-bar__close"
+            type="button"
+            aria-label="프로모션 띠 닫기"
+            data-promo-close>×</button>
+  </div>
+
+  <!-- ============================================================
+       Header
+  ============================================================ -->
+  <header class="header" id="siteHeader" data-header>
+    <div class="header__inner container">
+
+      <button class="header__hamburger"
+              type="button"
+              aria-label="메뉴 열기"
+              aria-expanded="false"
+              aria-controls="mobileDrawer"
+              data-menu-toggle>
+        <span></span><span></span><span></span>
+      </button>
+
+      <a class="header__logo" href="/" aria-label="AVANCE STORE 홈">
+        <span class="header__logo-text">AVANCE</span>
+      </a>
+
+      <nav class="header__nav" id="gnb" aria-label="주 메뉴">
+        <ul class="header__nav-list">
+          <li><a href="#">건과일</a></li>
+          <li><a href="#">커피</a></li>
+          <li><a href="#">특산품</a></li>
+          <li><a href="#">브랜드 스토리</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <button class="header__icon-btn" type="button" aria-label="검색 열기" data-search-toggle>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="m20 20-3.5-3.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <a class="header__icon-btn" href="#" aria-label="장바구니">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 7h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8L4 7Z" stroke-linejoin="round"/>
+            <path d="M9 7V5a3 3 0 0 1 6 0v2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true" hidden>
+    <div class="mobile-drawer__inner">
+      <button class="mobile-drawer__close" type="button" aria-label="메뉴 닫기" data-menu-close>×</button>
+      <nav aria-label="모바일 메뉴">
+        <ul class="mobile-drawer__list">
+          <li><a href="#">건과일</a></li>
+          <li><a href="#">커피</a></li>
+          <li><a href="#">특산품</a></li>
+          <li><a href="#">브랜드 스토리</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-drawer__auth">
+        <a href="#">로그인</a>
+        <a href="#">마이페이지</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       Main
+  ============================================================ -->
+  <main id="main" role="main">
+
+    <!-- ===== 1. HERO ===== -->
+    <section class="hero" aria-label="메인 비주얼">
+      <div class="hero__bg"></div>
+      <div class="hero__overlay"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">From Vietnam</p>
+        <h1 class="hero__title">
+          자연이 만든<br>최고의 선물
+        </h1>
+        <p class="hero__sub">베트남 직소싱 프리미엄 자연식품</p>
+        <a class="btn-primary hero__cta" href="#bestsellers">컬렉션 보기</a>
+      </div>
+
+      <div class="hero__indicators" role="tablist" aria-label="슬라이드 인디케이터">
+        <button class="hero__indicator is-active" type="button" aria-current="true" aria-label="슬라이드 1"></button>
+        <button class="hero__indicator" type="button" aria-label="슬라이드 2"></button>
+        <button class="hero__indicator" type="button" aria-label="슬라이드 3"></button>
+      </div>
+    </section>
+
+    <!-- ===== 2. BESTSELLERS ===== -->
+    <section class="section-wrap bestsellers" id="bestsellers" aria-labelledby="bestsellersTitle">
+      <div class="container">
+        <div class="bestsellers__header">
+          <h2 class="section-title" id="bestsellersTitle">Bestsellers</h2>
+          <a class="btn-ghost bestsellers__link" href="#">View All →</a>
+        </div>
+
+        <div class="bestsellers__grid">
+
+          <!-- Card 1 -->
+          <article class="product-card">
+            <div class="product-card__image">
+              <div class="dummy-image">Highland Arabica</div>
+              <div class="product-card__cta">
+                <button class="btn-primary" type="button">Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__origin">Dalat, Vietnam</p>
+              <h3 class="product-card__name">Highland Arabica 250g</h3>
+              <p class="product-card__price">32,000원</p>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="product-card">
+            <div class="product-card__image">
+              <div class="dummy-image">Dried Mango</div>
+              <div class="product-card__cta">
+                <button class="btn-primary" type="button">Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__origin">Mekong Delta</p>
+              <h3 class="product-card__name">Dried Mango Slices 180g</h3>
+              <p class="product-card__price">18,000원</p>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="product-card">
+            <div class="product-card__image">
+              <div class="dummy-image">Cashew Nuts</div>
+              <div class="product-card__cta">
+                <button class="btn-primary" type="button">Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__origin">Binh Phuoc</p>
+              <h3 class="product-card__name">Raw Cashew Nuts 200g</h3>
+              <p class="product-card__price">22,000원</p>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="product-card">
+            <div class="product-card__image">
+              <div class="dummy-image">Jackfruit Chips</div>
+              <div class="product-card__cta">
+                <button class="btn-primary" type="button">Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__origin">Dong Nai</p>
+              <h3 class="product-card__name">Jackfruit Chips 150g</h3>
+              <p class="product-card__price">14,000원</p>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="product-card">
+            <div class="product-card__image">
+              <div class="dummy-image">Coconut Honey</div>
+              <div class="product-card__cta">
+                <button class="btn-primary" type="button">Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__origin">Ben Tre</p>
+              <h3 class="product-card__name">Wild Coconut Honey 300g</h3>
+              <p class="product-card__price">28,000원</p>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="product-card">
+            <div class="product-card__image">
+              <div class="dummy-image">Pineapple</div>
+              <div class="product-card__cta">
+                <button class="btn-primary" type="button">Add to Cart</button>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__origin">Tien Giang</p>
+              <h3 class="product-card__name">Dried Pineapple 160g</h3>
+              <p class="product-card__price">16,000원</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. OUR FAVORITES ===== -->
+    <section class="section-wrap our-favorites" aria-labelledby="favoritesTitle">
+      <div class="container">
+        <h2 class="section-title" id="favoritesTitle">Our Favorites</h2>
+
+        <div class="our-favorites__layout">
+
+          <!-- 좌: 큰 피처 -->
+          <a class="our-favorites__feature" href="#" aria-label="큐레이터 픽 상세 보기">
+            <div class="dummy-image dummy-image--dark" style="height:100%;">Curator's Pick</div>
+            <div class="our-favorites__feature-caption">
+              <p class="our-favorites__feature-label">Curator's Pick</p>
+              <h3 class="our-favorites__feature-title">
+                사계절을 담은<br>달랏 하이랜드 컬렉션
+              </h3>
+            </div>
+          </a>
+
+          <!-- 우: 작은 카드 3개 -->
+          <div class="our-favorites__list">
+
+            <article class="product-card">
+              <div class="product-card__image">
+                <div class="dummy-image">Arabica</div>
+              </div>
+              <div class="product-card__info">
+                <p class="product-card__origin">Dalat</p>
+                <h3 class="product-card__name">Highland Arabica</h3>
+                <p class="product-card__price">32,000원</p>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-card__image">
+                <div class="dummy-image">Mango</div>
+              </div>
+              <div class="product-card__info">
+                <p class="product-card__origin">Mekong</p>
+                <h3 class="product-card__name">Dried Mango</h3>
+                <p class="product-card__price">18,000원</p>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-card__image">
+                <div class="dummy-image">Coconut</div>
+              </div>
+              <div class="product-card__info">
+                <p class="product-card__origin">Ben Tre</p>
+                <h3 class="product-card__name">Wild Coconut Honey</h3>
+                <p class="product-card__price">28,000원</p>
+              </div>
+            </article>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. JOURNAL ===== -->
+    <section class="section-wrap journal" aria-labelledby="journalTitle">
+      <div class="container">
+        <div class="bestsellers__header">
+          <h2 class="section-title" id="journalTitle">Journal</h2>
+          <a class="btn-ghost" href="#">All Stories →</a>
+        </div>
+
+        <div class="journal__grid">
+
+          <a class="journal__card" href="#">
+            <div class="journal__image">
+              <div class="dummy-image dummy-image--jade">Dalat Highlands</div>
+            </div>
+            <p class="journal__meta">2026 · 04 · 10 · Origins</p>
+            <h3 class="journal__title">달랏 고원, 커피가 익는 계절</h3>
+            <p class="journal__excerpt">
+              해발 1,500m, 구름 아래 자라는 아라비카. 한 잔의 커피가 품은 고지대의 서늘한 바람과 느린 숙성의 시간.
+            </p>
+          </a>
+
+          <a class="journal__card" href="#">
+            <div class="journal__image">
+              <div class="dummy-image">Mekong Delta</div>
+            </div>
+            <p class="journal__meta">2026 · 03 · 28 · People</p>
+            <h3 class="journal__title">메콩 델타, 망고 농부의 하루</h3>
+            <p class="journal__excerpt">
+              수확은 새벽에 시작된다. 손끝으로 익은 망고를 고르는 오래된 감각, 그리고 사계절의 태양이 남긴 단맛의 깊이.
+            </p>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. OUR ORIGINS ===== -->
+    <section class="our-origins" aria-labelledby="originTitle">
+      <div class="our-origins__bg" aria-hidden="true"></div>
+      <div class="our-origins__overlay" aria-hidden="true"></div>
+
+      <div class="our-origins__content">
+        <p class="our-origins__label">Origin</p>
+        <h2 class="our-origins__title" id="originTitle">
+          다낭에서 시작된 이야기
+        </h2>
+        <p class="our-origins__text">
+          바다와 산이 만나는 도시, 다낭. 우리는 그 길을 따라 베트남 전역의 산지를 찾습니다. 달랏의 커피, 메콩의 망고, 벤쩨의 코코넛까지 — 가장 정직한 땅의 맛을 골라 담습니다.
+        </p>
+        <a class="btn-secondary" href="#">Explore Origins</a>
+      </div>
+    </section>
+
+    <!-- ===== 6. BRAND STORY ===== -->
+    <section class="section-wrap brand-story" aria-labelledby="brandTitle">
+      <div class="container">
+        <div class="brand-story__layout">
+
+          <div class="brand-story__copy">
+            <p class="brand-story__eyebrow">Our Promise</p>
+            <h2 class="brand-story__title" id="brandTitle">
+              From Vietnam,<br>with care.
+            </h2>
+            <p class="brand-story__text">
+              AVANCE는 베트남 산지와 직접 연결된 프리미엄 자연식품 브랜드입니다. 과장된 가공 없이, 계절이 만든 맛을 그대로 전합니다. 한 입의 정직함, 한 잔의 진심.
+            </p>
+            <a class="btn-secondary" href="#">About Us</a>
+          </div>
+
+          <div class="brand-story__image">
+            <div class="dummy-image" style="height:100%;">Brand Story Image</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Footer
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner container">
+
+      <div class="footer__top">
+        <a class="footer__logo" href="/" aria-label="AVANCE STORE 홈">
+          <span class="footer__logo-text">AVANCE</span>
+        </a>
+        <p class="footer__tagline text-serif">From Vietnam, with care.</p>
+      </div>
+
+      <div class="footer__grid">
+
+        <nav class="footer__col" aria-label="쇼핑 메뉴">
+          <h4 class="footer__col-title">Shop</h4>
+          <ul class="footer__list">
+            <li><a href="#">건과일</a></li>
+            <li><a href="#">커피</a></li>
+            <li><a href="#">특산품</a></li>
+            <li><a href="#">베스트</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__col" aria-label="브랜드 메뉴">
+          <h4 class="footer__col-title">Brand</h4>
+          <ul class="footer__list">
+            <li><a href="#">브랜드 스토리</a></li>
+            <li><a href="#">오리진</a></li>
+            <li><a href="#">저널</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__col" aria-label="고객센터 메뉴">
+          <h4 class="footer__col-title">Customer</h4>
+          <ul class="footer__list">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">배송 안내</a></li>
+            <li><a href="#">교환 · 반품</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col" aria-label="SNS">
+          <h4 class="footer__col-title">Follow</h4>
+          <ul class="footer__sns">
+            <li>
+              <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="카카오톡 채널">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 4C7 4 3 7.3 3 11.3c0 2.5 1.7 4.8 4.3 6l-1 3.6 4.2-2.7c.5.1 1 .1 1.5.1 5 0 9-3.3 9-7.3S17 4 12 4Z" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="2.5" y="6" width="19" height="12" rx="3"/>
+                  <path d="m10 9.5 5 2.5-5 2.5v-5Z" fill="currentColor" stroke="none"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <dl class="footer__biz">
+          <div class="footer__biz-row">
+            <dt>상호</dt><dd>AVANCE STORE</dd>
+            <dt>대표</dt><dd>홍길동</dd>
+          </div>
+          <div class="footer__biz-row">
+            <dt>사업자등록번호</dt><dd>000-00-00000</dd>
+            <dt>통신판매업신고</dt><dd>제0000-서울-0000호</dd>
+          </div>
+          <div class="footer__biz-row">
+            <dt>주소</dt><dd>서울특별시 OO구 OO로 00</dd>
+          </div>
+          <div class="footer__biz-row">
+            <dt>고객센터</dt>
+            <dd>02-000-0000 · <a href="mailto:hello@avancestore.kr">hello@avancestore.kr</a></dd>
+            <dt>운영시간</dt><dd>평일 10:00 – 18:00 (공휴일 휴무)</dd>
+          </div>
+        </dl>
+
+        <div class="footer__legal">
+          <ul class="footer__legal-links" aria-label="약관 및 정책">
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#"><strong>개인정보처리방침</strong></a></li>
+            <li><a href="#">이용안내</a></li>
+          </ul>
+          <p class="footer__copyright">
+            © <span data-year>2026</span> AVANCE STORE. All rights reserved.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       Scripts
+  ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/swiper-init.js" defer></script>
+</body>
+</html>

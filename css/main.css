@@ -1,0 +1,518 @@
+/* ================================
+   AVANCE STORE - Main (Sections)
+   오셜록 벤치마킹 · 밀도 반으로 · 여백 두 배로
+   tokens.css 변수만 사용
+================================ */
+
+/* --------------------------------
+   1. HERO
+   풀스크린, 중앙 텍스트 오버레이, 하단 인디케이터
+-------------------------------- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  background-color: var(--bg-cream);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 배경 이미지 레이어 (카페24 슬라이드 자리) */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--bg-cream);
+  /* background-image: url({$slide_image}); — 카페24 이식 시 주입 */
+  background-size: cover;
+  background-position: center;
+  transition: opacity var(--duration-slow) var(--ease-avance);
+}
+
+/* 어두운 오버레이 — 가독성 보정 */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0) 0%,
+    rgba(26, 26, 26, 0.18) 100%
+  );
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 var(--space-card);
+  max-width: 860px;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--space-card);
+}
+
+.hero__title {
+  font-family: var(--font-serif);
+  font-size: var(--font-hero);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 var(--space-card);
+}
+
+.hero__sub {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: var(--line-body);
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto var(--space-block);
+}
+
+.hero__cta {
+  display: inline-block;
+}
+
+/* 하단 인디케이터 */
+.hero__indicators {
+  position: absolute;
+  bottom: var(--space-block);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.hero__indicator {
+  width: 32px;
+  height: 2px;
+  background-color: var(--muted);
+  opacity: 0.35;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    opacity var(--duration-slow) var(--ease-avance),
+    background-color var(--duration-slow) var(--ease-avance);
+}
+
+.hero__indicator[aria-current="true"],
+.hero__indicator.is-active {
+  background-color: var(--ink);
+  opacity: 1;
+}
+
+/* --------------------------------
+   2. BESTSELLERS
+   3열 그리드 (데스크탑) · 여백 넉넉
+-------------------------------- */
+.bestsellers__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-card);
+  margin-bottom: var(--space-block);
+}
+
+.bestsellers__header .section-title {
+  margin: 0;
+}
+
+.bestsellers__link {
+  white-space: nowrap;
+}
+
+.bestsellers__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-block) var(--space-card);
+}
+
+/* --------------------------------
+   3. OUR FAVORITES
+   좌 큰 이미지 60% · 우 카드 3개 40%
+-------------------------------- */
+.our-favorites__layout {
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  gap: var(--space-block);
+  align-items: stretch;
+}
+
+.our-favorites__feature {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--border);
+}
+
+.our-favorites__feature img {
+  /* {$feature_image} 자리 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-avance);
+}
+
+.our-favorites__feature:hover img {
+  transform: scale(1.03);
+}
+
+.our-favorites__feature-caption {
+  position: absolute;
+  left: var(--space-block);
+  bottom: var(--space-block);
+  right: var(--space-block);
+  color: var(--surface);
+}
+
+.our-favorites__feature-label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--surface);
+  opacity: 0.9;
+  margin-bottom: 12px;
+}
+
+.our-favorites__feature-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--surface);
+  margin: 0;
+}
+
+/* 우측 카드 스택 — 3개 */
+.our-favorites__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-card);
+}
+
+.our-favorites__list .product-card {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: var(--space-card);
+  align-items: center;
+}
+
+.our-favorites__list .product-card__image {
+  aspect-ratio: 1 / 1;
+  margin-bottom: 0;
+}
+
+.our-favorites__list .product-card__cta {
+  display: none; /* 좁은 카드에서는 호버 CTA 대신 클릭 유도 */
+}
+
+/* --------------------------------
+   4. JOURNAL
+   2열 매거진 카드 · 잡지 톤
+-------------------------------- */
+.journal__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-block);
+}
+
+.journal__card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.journal__image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: var(--border);
+  margin-bottom: var(--space-card);
+}
+
+.journal__image img {
+  /* {$journal_image} 자리 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-avance);
+}
+
+.journal__card:hover .journal__image img {
+  transform: scale(1.03);
+}
+
+.journal__meta {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.journal__title {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.journal__excerpt {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0;
+  max-width: 520px;
+}
+
+/* --------------------------------
+   5. OUR ORIGINS
+   풀 와이드 이미지 + 중앙 오버레이 텍스트
+-------------------------------- */
+.our-origins {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  background-color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: var(--space-section);
+  margin-bottom: var(--space-section);
+}
+
+.our-origins__bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--ink);
+  /* background-image: url({$origin_image}); */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.85;
+}
+
+.our-origins__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.2) 0%,
+    rgba(26, 26, 26, 0.55) 100%
+  );
+}
+
+.our-origins__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--surface);
+  padding: var(--space-section) var(--space-card);
+  max-width: 720px;
+}
+
+.our-origins__label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--surface);
+  opacity: 0.85;
+  margin-bottom: var(--space-card);
+}
+
+.our-origins__title {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 5.2vw, 84px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--surface);
+  margin: 0 0 var(--space-card);
+}
+
+.our-origins__text {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: var(--line-body);
+  color: var(--surface);
+  opacity: 0.88;
+  max-width: 560px;
+  margin: 0 auto var(--space-block);
+}
+
+/* 반전 버튼 — 어두운 배경 위 */
+.our-origins .btn-secondary {
+  color: var(--surface);
+  border-color: var(--surface);
+}
+.our-origins .btn-secondary:hover {
+  background-color: var(--surface);
+  color: var(--ink);
+}
+
+/* --------------------------------
+   6. BRAND STORY
+   풀 와이드 · 좌 텍스트 / 우 이미지
+-------------------------------- */
+.brand-story__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-section);
+  align-items: center;
+}
+
+.brand-story__copy {
+  max-width: 520px;
+}
+
+.brand-story__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--space-card);
+}
+
+.brand-story__title {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 var(--space-card);
+}
+
+.brand-story__text {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: var(--line-body);
+  color: var(--muted);
+  margin: 0 0 var(--space-block);
+}
+
+.brand-story__image {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--border);
+}
+
+.brand-story__image img {
+  /* {$brand_story_image} 자리 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-avance);
+}
+
+.brand-story__image:hover img {
+  transform: scale(1.03);
+}
+
+/* --------------------------------
+   Responsive
+-------------------------------- */
+@media (max-width: 1024px) {
+  /* Bestsellers — 태블릿 2열 */
+  .bestsellers__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Our Favorites — 세로 스택 */
+  .our-favorites__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-block);
+  }
+
+  /* Brand Story — 세로 스택, 이미지 먼저 */
+  .brand-story__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-block);
+  }
+  .brand-story__image {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 560px;
+    height: 90vh;
+  }
+
+  .hero__sub {
+    margin-bottom: var(--space-block);
+  }
+
+  .hero__indicators {
+    bottom: var(--space-card);
+  }
+
+  /* Bestsellers — 모바일 1열 */
+  .bestsellers__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-block);
+  }
+
+  .bestsellers__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* Our Favorites feature — 텍스트 위치 조정 */
+  .our-favorites__feature-caption {
+    left: var(--space-card);
+    right: var(--space-card);
+    bottom: var(--space-card);
+  }
+
+  /* 좁은 카드 — 세로 스택 */
+  .our-favorites__list .product-card {
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+
+  /* Journal — 1열 */
+  .journal__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-block);
+  }
+
+  /* Origins — 모바일 높이 축소 */
+  .our-origins {
+    min-height: 60vh;
+    margin-top: calc(var(--space-section) * 0.6);
+    margin-bottom: calc(var(--space-section) * 0.6);
+  }
+
+  .our-origins__content {
+    padding: var(--space-block) var(--space-card);
+  }
+
+  /* Brand Story — 간격 완화 */
+  .brand-story__layout {
+    gap: var(--space-block);
+  }
+}
